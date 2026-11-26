@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1220">
+  <meta name="description" content="Daily small-cap stock scanner with MACD and 52-week price extremes.">
+  <title>Small-Cap Scanner</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand-mark">SC</div>
+    <div>
+      <div class="brand-name">SMALL-CAP <span>SCANNER</span></div>
+      <div class="brand-subtitle">DAILY MARKET INTELLIGENCE</div>
+    </div>
+    <div class="top-right"><span class="live-dot"></span> DAILY CLOSE DATA</div>
+  </header>
+
+  <main class="page">
+    <section class="intro">
+      <div>
+        <p class="eyebrow">U.S. EQUITIES / DOWNSIDE WATCHLIST</p>
+        <h1>Small-Cap Selloff Scanner</h1>
+        <p class="lede">The 20 largest previous-session percentage decliners with market caps between $50M and $300M.</p>
+      </div>
+      <div class="date-card">
+        <div class="muted-label">DATA SESSION</div>
+        <div id="session-date" class="session-date">Loading…</div>
+        <div id="updated-at" class="muted-small">Waiting for data</div>
+      </div>
+    </section>
+
+    <section class="stat-grid">
+      <article class="stat-card"><div class="stat-label">MATCHES</div><div id="match-count" class="stat-value">—</div><div class="stat-note">Up to 20 qualifying stocks</div></article>
+      <article class="stat-card"><div class="stat-label">MARKET CAP RANGE</div><div class="stat-value">$50M–$300M</div><div class="stat-note">Company market capitalization</div></article>
+      <article class="stat-card"><div class="stat-label">RANKING</div><div class="stat-value">Daily %</div><div class="stat-note">Close vs. prior close</div></article>
+      <article class="stat-card"><div class="stat-label">INDICATOR</div><div class="stat-value">MACD</div><div class="stat-note">Latest 5 completed sessions</div></article>
+    </section>
+
+    <section class="panel">
+      <div class="panel-heading">
+        <div>
+          <h2>Largest daily decliners</h2>
+          <p class="panel-subtitle">Select a ticker to open its TradingView chart. Expand a row for MACD and 52-week extremes.</p>
+        </div>
+        <div class="search-wrap"><input id="search" type="search" placeholder="Filter ticker or company…" aria-label="Filter stocks"></div>
+      </div>
+      <div id="notice" class="notice">Loading the latest published scan…</div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr>
+            <th>#</th><th>COMPANY / TICKER</th><th class="right">LAST CLOSE</th><th class="right">DAILY CHANGE</th><th class="right">MARKET CAP</th><th>5-DAY MACD HISTOGRAM</th><th></th>
+          </tr></thead>
+          <tbody id="stock-rows"></tbody>
+        </table>
+      </div>
+      <div id="empty" class="empty" hidden>No matching stocks. Try a different search.</div>
+    </section>
+
+    <footer>
+      <span>Data provided by Massive. Charts link to TradingView.</span>
+      <span>For research purposes only — not investment advice.</span>
+    </footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
